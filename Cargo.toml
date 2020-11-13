@@ -1,0 +1,77 @@
+[workspace]
+members = [
+  "primitives",
+]
+
+[package]
+name = "darwinia-bridger"
+version = "0.1.12"
+authors = ["clearloop <udtrokia@gmail.com>"]
+description = "Darwinia bridger"
+repository = "https://github.com/darwinia-network/bridger"
+license = "MIT"
+documentation = "https://docs.rs/bridger"
+homepage = "https://github.com/darwinia-network/bridger"
+include = ["src/**/*", "Cargo.toml", "./README.md"]
+keywords = ["substrate", "darwinia"]
+readme = './README.md'
+edition = "2018"
+
+[lib]
+path = "src/lib.rs"
+
+[[bin]]
+name = "bridger"
+path = "src/bin/bridger.rs"
+
+[dependencies]
+jsonrpsee = "0.1.0"
+async-macros = "2.0.0"
+async-trait = "0.1.40"
+dirs = "3.0.1"
+env_logger = "0.7.1"
+etc = "0.1.11"
+futures = "0.3.5"
+log = "0.4.11"
+sp-keyring = "2.0.0"
+structopt = "0.3.18"
+substrate-subxt = "0.13.0"
+toml = "0.5.6"
+web3 = "0.13.0"
+serde_json = "1.0"
+hex = "0.4.2"
+actix = "0.10"
+actix-rt = "1.1.1"
+async-io = "1.1.10"
+sp-version = "2.0.0"
+
+[dependencies.reqwest]
+version = "0.10"
+features = ["json"]
+
+[dependencies.tokio]
+package = "tokio"
+version = "0.2.22"
+features = ["full"]
+
+[dependencies.primitives]
+package = "darwinia-bridge-primitives"
+version = "0.1.12"
+path = "./primitives"
+features = ["runtime", "rpc"]
+
+[dependencies.serde]
+package = "serde"
+version = "1"
+features = ["derive"]
+
+[patch.crates-io]
+# jsonrpsee = { path = "../jsonrpsee", features = ["ws"] }
+# substrate-subxt = { path = "../substrate-subxt" }
+jsonrpsee = { git = "https://github.com/AurevoirXavier/jsonrpsee", branch = "xavier-send-error", features = ["ws"] }
+substrate-subxt = { git = "https://github.com/AurevoirXavier/substrate-subxt", branch = "xavier-send-error" }
+[patch.'https://github.com/paritytech/jsonrpsee']
+# jsonrpsee = { path = "../jsonrpsee", features = ["ws"] }
+# substrate-subxt = { path = "../substrate-subxt" }
+jsonrpsee = { git = "https://github.com/AurevoirXavier/jsonrpsee", branch = "xavier-send-error", features = ["ws"] }
+substrate-subxt = { git = "https://github.com/AurevoirXavier/substrate-subxt", branch = "xavier-send-error" }
